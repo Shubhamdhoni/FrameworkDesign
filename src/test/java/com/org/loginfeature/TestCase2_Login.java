@@ -23,7 +23,7 @@ public class TestCase2_Login extends BaseTestComponents{
 		loginPm.sendKeys(loginPm.userName, userName);
 		loginPm.sendKeys(loginPm.password, password);
 		loginPm.clickLoginButton();
-		System.out.println("Login successful");
+		
 
 		
 
