@@ -16,12 +16,14 @@ public class TestCase2_Login extends BaseTestComponents{
 
 		loginPm = new LoginPage(driver);
 		dataReader = new ExcelReader();
+		
 		String userName = dataReader.getTestData("TestCase1_Login", "Username");
 		String password = dataReader.getTestData("TestCase1_Login", "Password");
 		
 		loginPm.sendKeys(loginPm.userName, userName);
 		loginPm.sendKeys(loginPm.password, password);
 		loginPm.clickLoginButton();
+		System.out.println("Login successful");
 
 		
 
