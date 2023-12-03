@@ -1,6 +1,4 @@
-./target/
-./test-output
-.classpath
+target
+test-output
+classpath
 
-
-/target/
