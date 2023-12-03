@@ -1,5 +1,7 @@
 package com.org.loginfeature;
 import org.testng.annotations.Test;
+
+import com.aventstack.extentreports.Status;
 import com.org.beforecomponents.BaseTestComponents;
 import com.org.pagemodules.LoginPage;
 import com.org.utility.CustomListner;
@@ -19,12 +21,11 @@ public class TestCase1_Login extends BaseTestComponents {
 		dataReader = new ExcelReader();
 		String userName = dataReader.getTestData("TestCase1_Login", "Username");
 		String password = dataReader.getTestData("TestCase1_Login", "Password");
-		//loginPm.sendUserName("hello@gmail.com");
-		//reportLog("Sending username");
+		test.log(Status.PASS, "Send username");
 		loginPm.sendKeys(loginPm.userName, userName);
-		//report.reportLog("Sending Password");
+		test.log(Status.PASS, "Send password");
 		loginPm.sendKeys(loginPm.password, password);
-		//report.reportLog("Click on login button");
+		test.log(Status.PASS, "Click on logout button");
 		loginPm.clickLoginButton();
 		
 	}
