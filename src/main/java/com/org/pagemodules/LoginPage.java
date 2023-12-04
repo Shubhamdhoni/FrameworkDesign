@@ -12,7 +12,7 @@ public class LoginPage extends BrowserActions {
 	
 	public WebDriver driver;
 	
-	@FindBy(xpath = "//input[@name='mail']")
+	@FindBy(xpath = "//input[@name='email']")
 	public WebElement userName;
 	
 
