@@ -21,20 +21,22 @@ import com.org.beforecomponents.BaseTestComponents;
 public class CustomListner extends BaseTestComponents implements ITestListener {
 
 	public ExtentTest test;
-	ExtentReports extent = ExtentReportNG.getReportObject();
+//	ExtentReports extent = ExtentReportNG.getReportObject();
 
 
 
 	@Override
 	public void onTestStart(ITestResult result) {
 		// TODO Auto-generated method stub
-		test = extent.createTest(result.getName());
+		//test = extent.createTest(result.getName());
 
 	}
 
 	@Override
 	public void onTestSuccess(ITestResult result) {
 		// TODO Auto-generated method stub
+		Object testClass = result.getInstance();
+		test = ((BaseTestComponents) testClass).test;
 		test.log(Status.PASS, "Test Passed");
 
 	}
@@ -42,9 +44,11 @@ public class CustomListner extends BaseTestComponents implements ITestListener {
 	@Override
 	public void onTestFailure(ITestResult result) {
 
-		test.fail(result.getThrowable());
+		
 		Object testClass = result.getInstance();
+		test = ((BaseTestComponents) testClass).test;
 		WebDriver driver = ((BaseTestComponents) testClass).driver;
+		test.fail(result.getThrowable());
 		TakesScreenshot screenshot = (TakesScreenshot)driver;
 		File source =screenshot.getScreenshotAs(OutputType.FILE);
 		File file = new File(System.getProperty("user.dir")+"//reports//"+result.getName()+".png");
@@ -55,23 +59,7 @@ public class CustomListner extends BaseTestComponents implements ITestListener {
 			e1.printStackTrace();
 		}
 		String path =System.getProperty("user.dir")+"//reports//"+result.getName()+".png";
-
 		test.addScreenCaptureFromPath(path, result.getName());
-//		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy_MM_ddHHmmss");
-//		LocalDateTime now = LocalDateTime.now();
-//		System.out.println(dtf.format(now));
-//		
-//		//Below 2 lines of code is used to get the driver instance from base test component class
-//		Object testClass = result.getInstance();
-//		WebDriver driver = ((BaseTestComponents) testClass).driver;
-//		//***************************************************************
-//		File file = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
-//		try {
-//			FileHandler.copy(file, new File("./screenshots/" + result.getName()+ dtf.format(now)+ ".png"));
-//		} catch (IOException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
 
 	}
 
@@ -96,7 +84,7 @@ public class CustomListner extends BaseTestComponents implements ITestListener {
 	@Override
 	public void onFinish(ITestContext context) {
 		// TODO Auto-generated method stub
-		extent.flush();
+		
 	
 
 	}

@@ -6,13 +6,12 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.annotations.AfterMethod;
+import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.Listeners;
 
 import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.ExtentTest;
-import com.aventstack.extentreports.Status;
 import com.org.utility.ExcelReader;
 import com.org.utility.ExtentReportNG;
 
@@ -23,13 +22,13 @@ public class BaseTestComponents {
 	public WebDriver driver;
 	ExcelReader dataReader = new ExcelReader();
 	String browser = dataReader.getTestData("TestCase4_SignUp", "Browser");
-//	public ExtentTest test;
-//	ExtentReports extent = ExtentReportNG.getReportObject();
+	public ExtentTest test;
+	ExtentReports extent = ExtentReportNG.getReportObject();
 
-//	
-//	@BeforeSuite
+////	
+////	@BeforeSuite
 //	public void generateReport() {
-//		//test = extent.createTest(this.getClass().getSimpleName());
+//		test = extent.createTest(this.getClass().getSimpleName());
 //		
 //	}
 //	
@@ -47,7 +46,7 @@ public class BaseTestComponents {
 	@BeforeMethod
 	public void initDriver() {
 		
-		//test = extent.createTest(this.getClass().getSimpleName());
+		test = extent.createTest(this.getClass().getSimpleName());
 
 		if (browser.equals("Chrome")) {
 			driver = new ChromeDriver();
@@ -68,4 +67,9 @@ public class BaseTestComponents {
 		driver.quit();
 	}
 
+	@AfterSuite
+	public void closeExtent() {
+		
+		extent.flush();
+	}
 }
