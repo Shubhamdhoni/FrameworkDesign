@@ -25,26 +25,12 @@ public class BaseTestComponents {
 	public ExtentTest test;
 	ExtentReports extent = ExtentReportNG.getReportObject();
 
-////	
-////	@BeforeSuite
-//	public void generateReport() {
-//		test = extent.createTest(this.getClass().getSimpleName());
-//		
-//	}
-//	
-//	
-//	// Method for adding logs passed from test cases
-//	public void reportLog(String message) {
-//		
-//		test.log(Status.PASS, message);// For extentTest HTML report
-////		logger.info("Message: " + message);
-////		Reporter.log(message);
-//
-//	}
 	
 	
 	@BeforeMethod
 	public void initDriver() {
+		
+		System.out.println(this.getClass().getSimpleName());
 		
 		test = extent.createTest(this.getClass().getSimpleName());
 
@@ -65,6 +51,9 @@ public class BaseTestComponents {
 	public void closeDriver() {
 
 		driver.quit();
+		
+		
+
 	}
 
 	@AfterSuite

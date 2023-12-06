@@ -19,6 +19,11 @@ import org.testng.xml.XmlSuite;
 import org.testng.xml.XmlTest;
 
 public class DynamicTestNGXMLGenerator {
+	
+	
+	//http://localhost:8080/ --Jenkins server link 
+	//username : test
+	//password : test@123test
 
 	public static void main(String[] args) {
 		String excelFilePath = "./UserData.xlsx";// Provide the path to your Excel file

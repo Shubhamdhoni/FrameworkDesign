@@ -4,6 +4,9 @@
     <test name="DynamicTest">
         <classes>
             <class name="com.org.loginfeature.TestCase1_Login"/>
+            <class name="com.org.loginfeature.TestCase2_Login"/>
+            <class name="com.org.loginfeature.TestCase3_SignUp"/>
+            <class name="com.org.loginfeature.TestCase4_SignUp"/>
         </classes>
     </test>
 </suite>

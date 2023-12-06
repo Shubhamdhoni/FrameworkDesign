@@ -3,13 +3,30 @@ package com.org.beforecomponents;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 
-public class BrowserActions {
+import com.aventstack.extentreports.ExtentTest;
+import com.aventstack.extentreports.Status;
+
+public class BrowserActions extends BaseTestComponents {
+	
+	
+	
+	
+	
 	
 	// This all methods are re-usable methods
 	
 	// sending keys option 
+	
+	
 	public void sendKeys(WebElement element,String value) {
+		
 		element.sendKeys(value);	
+	}
+	
+	
+	public void sendKeys(WebElement element,String value,String message) {
+		element.sendKeys(value);
+		test.log(Status.PASS, message);
 	}
 	
 	// clicking options 
