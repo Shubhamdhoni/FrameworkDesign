@@ -53,7 +53,19 @@ public class BrowserActions extends BaseTestComponents {
 		sel.selectByVisibleText(Text);
 	}
 	
+            // clear text
+	public void clearText(WebElement element) {
+	    element.clear();
+	}
 	
+            // get text	
+	public String getText(WebElement element) {
+	    return element.getText();
+	}
+
+	
+	
+
 	
 	
 	
