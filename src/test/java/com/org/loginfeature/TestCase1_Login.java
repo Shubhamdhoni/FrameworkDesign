@@ -17,6 +17,7 @@ public class TestCase1_Login extends BaseTestComponents {
 	@Test()
 	public void testCase1() {
 		//retryAnalyzer=Retry.class
+		System.out.println();
 		loginPm = new LoginPage(driver);
 		dataReader = new ExcelReader();
 		String userName = dataReader.getTestData("TestCase1_Login", "Username");
